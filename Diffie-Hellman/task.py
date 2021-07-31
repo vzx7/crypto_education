@@ -1,5 +1,4 @@
 from tinyec.ec import SubGroup, Curve, Point
-
 import secrets
 
 
