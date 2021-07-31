@@ -1,4 +1,6 @@
+# only for Linux/unix
 import sys
+import os
 
 
 def getBTS(byte): return bin(int.from_bytes(byte, byteorder=sys.byteorder))
@@ -44,13 +46,14 @@ def calc(path, arr):
     return dest
 
 
-arr_src = get_src('/home/zx/BC/task3/MyPassword.txt.encrypted')
-arr_dest = calc('/home/zx/BC/task3/Note.bmp.encrypted', arr_src)
-final = calc('/home/zx/BC/task3/head.bmp', arr_dest)
+home = os.environ["HOME"]
+arr_src = get_src('./MyPassword.txt.encrypted')
+arr_dest = calc('./Note.bmp.encrypted', arr_src)
+final = calc('./head.bmp', arr_dest)
 
 s = bytes(final)
-print(s)
 
 resF = open('out', 'wb')
 resF.write(s)
 resF.close()
+os.system('cat ./out')
